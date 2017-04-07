@@ -57,15 +57,15 @@ filtersMsg.usage = '\tbarck get-filters -t account -u user -p password -m mode -
 
 filtersMsg.help = '''
 EXAMPLE
-	barck get-report -t 123456789 -u jimmi.hendrix@kony.com -p ******* -m shared -r MyReport
+	barck get-report -t 123456789 -u jimmi.hendrix@rocks.com -p ******* -m shared -r MyReport
 '''
 
 def reportMsg = [:]
-reportMsg.usage = '\tbarck get-report -t account -u user -p password -m mode -r report [-F filter1=value1[,timestamp=filter_value2]]'
+reportMsg.usage = '\tbarck get-report -t account -u user -p password -m mode -r report [-F filter1=foo[,filter2=bar]]'
 
 reportMsg.help = '''
 EXAMPLE
-	barck get-report -t 123456789 -u jimmi.hendrix@kony.com -p ******* -m shared -r MyReport -F appmane_1=MyApp,eventtimestamp_utc_1="2017-03-01 00:00:00” 
+	barck get-report -t 123456789 -u jimmi.hendrix@rocks.com -p ******* -m shared -r MyReport -F appmane_1=MyApp,eventtimestamp_utc_1="2017-03-01 00:00:00” 
 '''
 
 def mainArgs = args.size()>0?args[0..0]:[] //The first arg is always the command.
@@ -140,7 +140,7 @@ def execCmd(args, msg, cmd){
 		n( longOpt: 'noisy', required: false, 'Print every single little thing.' )
 		t( longOpt: 'account', required: true, args: 1, '9 digit id of the Kony Cloud account -e.g. 100054321.' )
 		r( longOpt: 'report', required: true, args: 1, 'Name of the custom report.' )
-		u( longOpt: 'user', required: true, args: 1, 'Kony user required for authentication, for e.g. abc@kony.com.' )
+		u( longOpt: 'user', required: true, args: 1, 'Kony user required for authentication, for e.g. jimi.hendrix@rocks.com.' )
 		p( longOpt: 'password', required: true, args: 1, 'Password for the Kony user.' )
 		m( longOpt: 'mode', required: true, args: 1, "Whether the report is private or shared. Possible values are 'private' and 'shared'." )
 	}
