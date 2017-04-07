@@ -65,7 +65,10 @@ reportMsg.usage = '\tbarck get-report -t account -u user -p password -m mode -r 
 
 reportMsg.help = '''
 EXAMPLE
-	barck get-report -t 123456789 -u jimmi.hendrix@rocks.com -p ******* -m shared -r MyReport -F appmane_1=MyApp,eventtimestamp_utc_1="2017-03-01 00:00:00” 
+	barck get-report -t 123456789 -u jimmi.hendrix@rocks.com -p ******* -m shared -r MyReport -F appmane_1=MyApp,eventtimestamp_utc_1=2017-03-01T13:30:00 
+
+NOTE
+	The values for timestamp parameters must be in the format yyyy-MM-dd\'T\'HH:mm:ss -e.g. \'2017-03-01T13:30:09\' for 1st March 2017 at 1:30 pm.
 '''
 
 def mainArgs = args.size()>0?args[0..0]:[] //The first arg is always the command.
