@@ -8,6 +8,9 @@ import groovy.util.slurpersupport.GPathResult
 
 class MobileFabricClient{
 
+	def authBaseUrl = 'https://accounts.auth.konycloud.com'
+	def apiBaseUrl = 'https://api.kony.com/api/v1_1'
+
 	def httpRequest(method, reqUri, reqContentType, reqHeaders, urlQuery, reqBody){
 		def http = new HTTPBuilder(reqUri)
 		def result
@@ -81,7 +84,7 @@ class MobileFabricClient{
 	def logIntoKony(user, password){
 
 		Echo.say '\nLogging into Kony Cloud'
-		def konyLoginUrl = 'https://accounts.auth.konycloud.com/login'
+		def konyLoginUrl = "${authBaseUrl}/login"
 		def json = httpRequest(
 			POST,
 			konyLoginUrl,
@@ -99,7 +102,7 @@ class MobileFabricClient{
 	def getUserInfo(token, account){
 		
 		Echo.say '\nFetching user info'
-		def userInfoUrl = 'https://manage.kony.com/api/v1_0/whoami'
+		def userInfoUrl = "${apiBaseUrl}/whoami"
 		def json = httpRequest(
 			GET,
 			userInfoUrl,
@@ -119,7 +122,7 @@ class MobileFabricClient{
 	def logIntoJasper(token, accountGuid, userGuid){
 
 		Echo.say '\nLogging into reports'
-		def jasperLoginUrl = "https://api.kony.com/api/v1_1/accounts/${accountGuid}/reports/login"
+		def jasperLoginUrl = "${apiBaseUrl}/accounts/${accountGuid}/reports/login"
 		def json = httpRequest(
 			GET,
 			jasperLoginUrl,
@@ -148,7 +151,7 @@ class MobileFabricClient{
 	def requestFilters(token, account, accountGuid, jasperSession, awselbSession, mode, report){
 		
 		Echo.say "\nQuerying filters for ${mode} report ${report}"
-		def getFiltersUrl = "https://api.kony.com/api/v1_1/accounts/${accountGuid}/reports/inputControls"
+		def getFiltersUrl = "${apiBaseUrl}/accounts/${accountGuid}/reports/inputControls"
 		def resourceUri = getReportUri(account, accountGuid, mode, report)
 		Echo.say "\tresourceUri '${resourceUri}'"
 
@@ -191,7 +194,7 @@ class MobileFabricClient{
 
 	def requestReport(token, account, accountGuid, jasperSession, awselbSession, mode, report, filters){
 		Echo.say "\nRequesting ${mode} report ${report}"
-		def getReportUrl = "https://api.kony.com/api/v1_1/accounts/${accountGuid}/reports/view"
+		def getReportUrl = "${apiBaseUrl}/accounts/${accountGuid}/reports/view"
 		def resourceUri = getReportUri(account, accountGuid, mode, report)
 		Echo.say "\tresourceUri '${resourceUri}'"
 
