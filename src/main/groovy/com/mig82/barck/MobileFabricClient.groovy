@@ -176,7 +176,12 @@ class MobileFabricClient{
 				'desc': it.label,
 				'required': it.mandatory,
 				'read-only': it.readOnly,
-				'default': it.state.options.findAll{it.selected}.collect{it.value} //The currently selected option.
+				'default': it.state?.options?.findAll{it.selected}.collect{it.value}, //The currently selected option.
+				'format': it.validationRules.collect{ //Collect the formats for each validatioin rule.
+					it.values().collect{ //Collect all the rules.
+						it.format //Return the format for each rule.
+					}
+				} 
 			]}
 		}
 		Echo.say "\tfilters: ${filters}"
