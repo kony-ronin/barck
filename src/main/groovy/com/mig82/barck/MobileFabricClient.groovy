@@ -199,15 +199,21 @@ class MobileFabricClient{
 		Echo.say "\tresourceUri '${resourceUri}'"
 
 		//Transform the filters from an array of strings [foo=1, bar=2] to a map [foo:1, bar:2] 
-		def filtersMap = filters.collectEntries{ it -> 
-			def t = it.split('=')
-			[ (t[0]): t[1] ]
-		}
-		Echo.say "\tfiltersMap: $filtersMap"
+		def filterKeyList, filtersMap = [:]
+		if(filters){
+			filtersMap = filters.collectEntries{ it -> 
+				def t = it.split('=')
+				[ (t[0]): t[1] ]
+			}
+			Echo.say "\tfiltersMap: $filtersMap"
 
-		//Now compose a string concatenation of the keys in the map 'foo,bar'
-		def filterKeyList = filtersMap.keySet().join(',')
-		Echo.say "\tfilterKeyList: $filterKeyList"
+			//Now compose a string concatenation of the keys in the map 'foo,bar'
+			filterKeyList = filtersMap.keySet().join(',')
+			Echo.say "\tfilterKeyList: $filterKeyList"
+		}
+		else{
+			Echo.say "\tno filters requested."
+		}
 
 		def query =[
 			jasperSession: jasperSession,
@@ -216,11 +222,13 @@ class MobileFabricClient{
 			file_extension: 'csv',
 			type: 'csv',
 			export: true,
-			filters: filterKeyList,
+			filters: filterKeyList?:"",
 		] << filtersMap
 		Echo.say "\tquery: $query"
 		
 		def reportFileName = "${account}-${report}-${filters}.csv"
+		Echo.say "\tDownloading $reportFileName..."
+
 		def text = httpDownloadReport(
 			GET,
 			getReportUrl,
