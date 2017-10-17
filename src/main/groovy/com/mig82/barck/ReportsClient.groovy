@@ -3,7 +3,7 @@ import org.apache.commons.cli.Option
 import groovy.time.TimeCategory 
 import groovy.time.TimeDuration
 
-def version = '1.0'
+def version = '0.2'
 def msg = [:]
 msg.credits = '''
 **************************************************
