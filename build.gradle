@@ -10,7 +10,7 @@
 apply plugin: 'java'
 apply plugin: 'groovy'
 apply plugin: 'application'
-version = '1.0'
+version = '0.2'
 mainClassName='com.mig82.barck.ReportsClient'
 
 
