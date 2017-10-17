@@ -88,6 +88,4 @@ Provide input values to the predifined filters of your report and download the r
 * The name of the custom report is the one it's displayed with at `https://manage.kony.com` when you go to `Reports>Custom Reports>` under the `Custom Reports` tab.
 * If you're using Barck on a Unix-like operating system -such as Linux or Mac OS- you'll have to previx `barck` with `./`
 
-    ./barck [options]
-    ./barck <command> [parameters]
-
+    
