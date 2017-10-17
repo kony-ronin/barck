@@ -72,7 +72,7 @@ class MobileFabricClient{
 			}
 
 			response.'413' = { resp ->
-				Echo.say "he request can't be fulfilled because the payload is too large."
+				Echo.say "The request can't be fulfilled because the payload is too large."
 			}
 
 			response.failure = { resp ->
