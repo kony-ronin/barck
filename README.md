@@ -73,4 +73,15 @@ Provide input values to the predifined filters of your report and download the r
                                   
 ### Example
 
-    barck get-report -t 123456789 -u jimmi.hendrix@rocks.com -p ******* -m shared -r MyReport -F appmane_1=MyApp,eventtimestamp_utc_1="2017-03-01 00:00:00”
+    barck get-report -t 123456789 -u jimmi.hendrix@rocks.com -p 'my@passwd123!5' -m shared -r 'My Report' -F appmane_1=MyApp,eventtimestamp_utc_1="2017-03-01 00:00:00”
+
+### Notes:
+
+* You will need to enclose your password in single quotes `'` if it contains a bang/exclamation `!` character.
+* If the name of the custom report contains blank spaces you will need to either enclose it in single quotes `'` or escape those spaces with back-slashes `\`.
+* The name of the custom report is the one it's displayed with at `https://manage.kony.com` when you go to `Reports>Custom Reports>` under the `Custom Reports` tab.
+* If you're using Barck on a Unix-like operating system -such as Linux or Mac OS- you'll have to previx `barck` with `./`
+
+    ./barck [options]
+    ./barck <command> [parameters]
+

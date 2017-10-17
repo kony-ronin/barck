@@ -41,7 +41,7 @@ task wrapper(type: Wrapper) {
 task uberjar(type: Jar, dependsOn:[':compileJava',':compileGroovy']) {
     from files(sourceSets.main.output.classesDir)
     from configurations.runtime.asFileTree.files.collect { zipTree(it) }
-    //archiveName='barck'
+    archiveName='barck.jar'
     manifest {
         attributes 'Main-Class': mainClassName
     }
