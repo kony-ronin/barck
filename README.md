@@ -54,7 +54,7 @@ List the predefined filters for a given report. Basically, to get a clue on how 
 
 ### Example
 
-    barck get-report -t 123456789 -u jimmi.hendrix@rocks.com -p ******* -m shared -r MyReport
+    barck get-report -t 123456789 -u jimmi.hendrix@rocks.com -p 'my@passwd123!5' -m shared -r 'My Report'
 
 ## 3. Downloading a Report
 
