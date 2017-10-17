@@ -7,7 +7,13 @@ Allows you to download custom reports from Kony Mobile Fabric.
 
 Barck is a Groovy + Gradle project. All it's dependencies are packaged with it, so it's stand-alone. Build it by running:
 
-    gradle clean uberJar
+On Unix-like platforms such as Linux and Mac OS:
+
+    ./gradlew clean uberJar
+
+On Windows, using the gradlew.bat batch file
+
+    gradlew clean uberJar
     
 ## 1. Running Barck
 
