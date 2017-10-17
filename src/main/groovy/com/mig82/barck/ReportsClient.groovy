@@ -188,8 +188,10 @@ def execCmd(args, msg, cmd){
 
 def getFilters(account, report, user, password, mode){
 	def mfcli = new MobileFabricClient()
+	println "\nGetting filters"
 	def filters = mfcli.getFilters(account, report, user, password, mode)
-	
+	println "\nGot filters"
+
 	if(filters && filters.size() > 0){
 		println "\nFilters for ${mode} report ${report}:\n"
 		if(filters){filters.each { println "\t${it}" }}
@@ -203,7 +205,9 @@ def getFilters(account, report, user, password, mode){
 def getReport(account, report, user, password, mode, filters){
 	def mfcli = new MobileFabricClient()
 	def start = new Date()
+	println "\nGetting report"
 	mfcli.getReport(account, report, user, password, mode, filters)
+	println "\nGot report"
 	def stop = new Date()
 	TimeDuration te = TimeCategory.minus( stop, start )
 	println "Done. Time elapsed ${te}"
