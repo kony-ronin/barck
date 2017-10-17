@@ -226,7 +226,7 @@ class MobileFabricClient{
 		] << filtersMap
 		Echo.say "\tquery: $query"
 		
-		def reportFileName = "${account}-${report}-${filters}.csv"
+		def reportFileName = "${account}-${report}-${filters?:'unfiltered'}.csv"
 		Echo.say "\tDownloading $reportFileName..."
 
 		def text = httpDownloadReport(
